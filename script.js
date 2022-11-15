@@ -1,77 +1,83 @@
 function getplusbtn(increase) {
-    const getInputField = document.getElementById(increase);
+    const getInputField = document.getElementById("quantity-input");
     const getinputAmmount =getInputField.value; 
     const getstringtonum = parseInt(getinputAmmount);
-    let totallAmmount = getstringtonum+1;
+
+    let totallAmmount;
+    if (increase === true) {
+        totallAmmount = getstringtonum+1;
+    } else {
+        totallAmmount= getstringtonum-1;
+    }
+
     getInputField.value = totallAmmount;
+
     return totallAmmount;
 }
-function getlessbtn(dicrease) {
-    const getInputField = document.getElementById(dicrease);
+function getlessbtn(increase) {
+    const getInputField = document.getElementById("cover-quantity-input");
     const getinputAmmount =getInputField.value; 
     const getstringtonum = parseInt(getinputAmmount);
-    let totallAmmount = getstringtonum-1;
+
+    let totallAmmount;
+    if (increase === true) {
+        totallAmmount = getstringtonum+1;
+    } else {
+        totallAmmount= getstringtonum-1;
+    }
+
     getInputField.value = totallAmmount;
+
     return totallAmmount;
 }
+function updateprice(newcasenumber) {
+    const totallnewcaseNumber =  newcasenumber * 1219;
+    const getIphonePrice = document.getElementById('iphone-price');
+    getIphonePrice.innerText = totallnewcaseNumber;
+}
+function updatepricecover(newcasenumber) {
+    const totallnewcaseNumber =  newcasenumber * 59;
+    const getIphonePrice = document.getElementById('cover-price');
+    getIphonePrice.innerText = totallnewcaseNumber;
+}
+
+function getelemetbyid(elementid) {
+    const getElementText = document.getElementById(elementid);
+    const getstringElementText = getElementText.innerText;
+    const currnetElementText = parseInt(getstringElementText);
+    return currnetElementText;
+}
+
+function CalculateSubtotal() {
+    const getIphoneId = document.getElementById('iphone-price');
+    const getCoverId = document.getElementById('cover-price');
+
+    const calculatesubtotalAmmount = getIphoneId + getCoverId;
+
+    const getSubtotallAmmount = document.getElementById('subtotal');
+    getSubtotallAmmount.innerText = calculatesubtotalAmmount;
+
+}
+
 document.getElementById('quantity-plus-btn').addEventListener("click",function(){
-    const plussButton = getplusbtn("quantity-input");
-    const iphonePriceNow = document.getElementById('iphone-price');
-    const getiphonePrice = iphonePriceNow.innerText;
-    const currentiphonePrice = parseInt(getiphonePrice);
-    const calculateIphonePriceAmmount = plussButton * 1219;
-    iphonePriceNow.innerText = calculateIphonePriceAmmount;
 
-    const getSubtotalAmmount = document.getElementById("subtotal");
-    const convertsTonum = getSubtotalAmmount.innerText;
-    const currentSubtotalAmmount = parseInt(convertsTonum);
-    const calculateSubtotalAmmount =  currentSubtotalAmmount + calculateIphonePriceAmmount;
-    getSubtotalAmmount.innerText = calculateIphonePriceAmmount;
-
-
-    // console.log(typeof currentSubtotalAmmount);
+    const newcasenumber = getplusbtn(true);
+    updateprice(newcasenumber);
     
+
 })
 document.getElementById('quantity-less-btn').addEventListener("click",function(){
-    getlessbtn("quantity-input");
-    const iphonePriceNow = document.getElementById('iphone-price');
-    const getiphonePrice = iphonePriceNow.innerText;
-    const currentiphonePrice = parseInt(getiphonePrice);
-    const calculateIphonePriceAmmount = currentiphonePrice - 1219;
-    iphonePriceNow.innerText = calculateIphonePriceAmmount;
+    const newcasenumber = getplusbtn(false);
+    updateprice(newcasenumber);
+   
+    
 
-    const getSubtotalAmmount = document.getElementById("subtotal");
-    const convertsTonum = getSubtotalAmmount.innerText;
-    const currentSubtotalAmmount = parseInt(convertsTonum);
-    const calculateSubtotalAmmount =  currentSubtotalAmmount + calculateIphonePriceAmmount;
-    getSubtotalAmmount.innerText = calculateIphonePriceAmmount;
 })
 document.getElementById('cover-plus-btn').addEventListener("click",function(){
-    const plussButton = getplusbtn("cover-quantity-input");
-    const iphonePriceNow = document.getElementById('cover-price');
-    const getiphonePrice = iphonePriceNow.innerText;
-    const currentiphonePrice = parseInt(getiphonePrice);
-    const calculateIphonePriceAmmount = plussButton * 59;
-    iphonePriceNow.innerText = calculateIphonePriceAmmount;
-
-    const getSubtotalAmmount = document.getElementById("subtotal");
-    const convertsTonum = getSubtotalAmmount.innerText;
-    const currentSubtotalAmmount = parseInt(convertsTonum);
-    const calculateSubtotalAmmount =  currentSubtotalAmmount + calculateIphonePriceAmmount;
-    getSubtotalAmmount.innerText = calculateIphonePriceAmmount;
-
+    const newcasenumber = getlessbtn(true);
+    updatepricecover(newcasenumber);
 })
 document.getElementById('cover-less-btn').addEventListener("click",function(){
-    getlessbtn("cover-quantity-input");
-    const iphonePriceNow = document.getElementById('cover-price');
-    const getiphonePrice = iphonePriceNow.innerText;
-    const currentiphonePrice = parseInt(getiphonePrice);
-    const calculateIphonePriceAmmount = currentiphonePrice - 59;
-    iphonePriceNow.innerText = calculateIphonePriceAmmount;
-
-    const getSubtotalAmmount = document.getElementById("subtotal");
-    const convertsTonum = getSubtotalAmmount.innerText;
-    const currentSubtotalAmmount = parseInt(convertsTonum);
-    const calculateSubtotalAmmount =  currentSubtotalAmmount + calculateIphonePriceAmmount;
-    getSubtotalAmmount.innerText = calculateIphonePriceAmmount;
+    const newcasenumber = getlessbtn(false);
+    updatepricecover(newcasenumber);
 })
