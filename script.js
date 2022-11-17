@@ -48,36 +48,36 @@ function getelemetbyid(elementid) {
     return currnetElementText;
 }
 
-function CalculateSubtotal() {
-    const getIphoneId = document.getElementById('iphone-price');
-    const getCoverId = document.getElementById('cover-price');
-
-    const calculatesubtotalAmmount = getIphoneId + getCoverId;
-
-    const getSubtotallAmmount = document.getElementById('subtotal');
-    getSubtotallAmmount.innerText = calculatesubtotalAmmount;
-
+function CalculateSubTotal(){
+    const currentIphonePrice = getelemetbyid('iphone-price');
+    const currentCoverPrice = getelemetbyid('cover-price');
+    const SubTotallAmmount = currentIphonePrice + currentCoverPrice;
+    const CurrentSubtotalAmmount = document.getElementById('subtotal');
+    CurrentSubtotalAmmount.innerText = SubTotallAmmount;
+   
+    
 }
 
 document.getElementById('quantity-plus-btn').addEventListener("click",function(){
 
     const newcasenumber = getplusbtn(true);
-    updateprice(newcasenumber);
-    
+    const upgradePriceNum = updateprice(newcasenumber);
+    CalculateSubTotal();
 
 })
 document.getElementById('quantity-less-btn').addEventListener("click",function(){
     const newcasenumber = getplusbtn(false);
-    updateprice(newcasenumber);
-   
-    
+    const upgradePriceNum = updateprice(newcasenumber);
+    CalculateSubTotal();
 
 })
 document.getElementById('cover-plus-btn').addEventListener("click",function(){
     const newcasenumber = getlessbtn(true);
-    updatepricecover(newcasenumber);
+    const upgradePriceNum = updatepricecover(newcasenumber);
+    CalculateSubTotal();
 })
 document.getElementById('cover-less-btn').addEventListener("click",function(){
     const newcasenumber = getlessbtn(false);
-    updatepricecover(newcasenumber);
+    const upgradePriceNum = updatepricecover(newcasenumber);
+    CalculateSubTotal();
 })
