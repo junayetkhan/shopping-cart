@@ -51,10 +51,10 @@ function getelemetbyid(elementid) {
 function CalculateSubTotal(){
     const currentIphonePrice = getelemetbyid('iphone-price');
     const currentCoverPrice = getelemetbyid('cover-price');
+
     const SubTotallAmmount = currentIphonePrice + currentCoverPrice;
     const CurrentSubtotalAmmount = document.getElementById('subtotal');
     CurrentSubtotalAmmount.innerText = SubTotallAmmount;
-   
     
 }
 
